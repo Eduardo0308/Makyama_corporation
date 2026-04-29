@@ -103,7 +103,66 @@ Adicionar
 </div>
 
 
-<ul id="listaTarefas"></ul>
+<ul id="listaTarefas">
+
+<!-- 🔒 TAREFAS FIXAS -->
+<li class="fixa">
+<textarea class="texto-tarefa">
+Levar Hana no ballet — Dia 5
+
+Sair do turno às 17:40.
+Passar em casa (Distrito Residencial Bloco C-12).
+Levar Hana até o estúdio Luminous Steps às 18:30.
+Não esquecer da mochila rosa.
+(última ausência registrada — evitar recorrência)
+</textarea>
+</li>
+
+<li class="fixa">
+<textarea class="texto-tarefa">
+Revisar lote 784-A
+
+Acessar servidor secundário da Camada Zero.
+Verificar arquivos que retornaram após deleção padrão.
+Anomalia: dados reestruturando metadados.
+Não interagir manualmente por mais de 3 minutos.
+</textarea>
+</li>
+
+<li class="fixa">
+<textarea class="texto-tarefa">
+Filtrar dados — Hashira Security Contracts
+
+Localizar contratos com flag “vermelho corporativo”.
+Remover cláusulas envolvendo contenção biológica.
+Encaminhar versão limpa para diretoria.
+Backup proibido.
+</textarea>
+</li>
+
+<li class="fixa">
+<textarea class="texto-tarefa">
+Apagar registros — TCLN (crianças)
+
+Acessar banco restrito nível 3.
+Filtrar por idade < 12 anos.
+Executar deleção total + sobrescrita tripla.
+Não visualizar arquivos completos.
+</textarea>
+</li>
+
+<li class="fixa">
+<textarea class="texto-tarefa">
+Atualizar projeto “O Profeta”
+
+Status atual: descartado (oficial).
+Verificar se há instâncias ainda ativas no sistema.
+Último registro apresenta atividade após encerramento.
+Não abrir arquivos de vídeo.
+</textarea>
+</li>
+
+</ul>
 
 </div>
 
@@ -176,6 +235,8 @@ let tarefas = [];
 document
 .querySelectorAll(".texto-tarefa")
 .forEach(function(t){
+
+if(t.closest(".fixa")) return;
 
 tarefas.push(t.value);
 
