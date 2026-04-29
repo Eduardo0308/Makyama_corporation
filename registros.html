@@ -16,7 +16,7 @@ if(localStorage.getItem("logado") !== "sim"){
 
 
 <header>
-    <img src="logoreal.png" class="logo-canto">
+    <img src="Logoreal.png" class="logo-canto">
 <h1>REGISTROS</h1>
 <p>Registros carregados...</p>
 </header>
@@ -58,7 +58,128 @@ Adicionar Registro
 </div>
 
 <!-- LISTA DE REGISTROS -->
-<ul id="listaRegistros"></ul>
+<ul id="listaRegistros">
+
+<!-- 🔒 REGISTRO FIXO 1 -->
+<li class="registro fixa">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+REGISTRO #KDH-SHK-021
+</div>
+
+<div class="registro-conteudo">
+
+<textarea class="texto-tarefa" readonly>
+Tipo: Reclamação de Cliente
+Status: Encerrado
+
+“Solicitei a venda completa dos meus dados há 3 semanas.
+Recebi o pagamento, mas continuo recebendo anúncios…
+não só isso, eles estão baseados em decisões que eu ainda não tomei.”
+
+Resposta automática da Kokan:
+
+“Seus dados foram devidamente processados e descartados.
+Agradecemos sua colaboração.”
+
+anotação interna:
+
+Cliente mantido no fluxo de observação ativa.
+</textarea>
+
+</div>
+
+</li>
+
+<!-- 🔒 REGISTRO FIXO 2 -->
+<li class="registro fixa">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+REGISTRO #KDH-SHK-044
+</div>
+
+<div class="registro-conteudo">
+
+<textarea class="texto-tarefa" readonly>
+Tipo: Incidente Técnico
+Status: Arquivado
+
+“Pacote de dados ID-784-A reapareceu no sistema após deleção completa.
+Integridade: 103%
+Estrutura: modificada”
+
+nota do técnico:
+
+“não é corrupção… parece reorganização”
+
+resposta superior:
+
+“não interagir manualmente”
+</textarea>
+
+</div>
+
+</li>
+
+<!-- 🔒 REGISTRO FIXO 3 -->
+<li class="registro fixa">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+REGISTRO #KDH-SHK-052
+</div>
+
+<div class="registro-conteudo">
+
+<textarea class="texto-tarefa" readonly>
+Tipo: Venda de Dados
+Status: Concluído
+
+Nome: [REMOVIDO]
+Categoria: Perfil comportamental completo
+Comprador: Hashira Security
+
+observação:
+
+“cliente solicitado para remoção total após venda”
+
+realidade:
+
+dados ainda ativos no sistema
+</textarea>
+
+</div>
+</li>
+
+<li class="registro fixa">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+REGISTRO #KDH-SHK-066
+</div>
+
+<div class="registro-conteudo">
+
+<textarea class="texto-tarefa" readonly>
+Tipo: Anomalia
+Status: Ignorado
+
+“Arquivos deletados continuam gerando logs de atividade”
+
+Horários registrados:
+
+02:13
+03:47
+03:47 novamente
+
+nota final:
+
+“logs duplicados sem origem”
+</textarea>
+
+</div>
+
+</li>
+
+</ul>
 
 </div>
 
@@ -138,6 +259,9 @@ let registros = [];
 
 document.querySelectorAll(".registro").forEach(function(r){
 
+// 🔒 IGNORA FIXOS
+if(r.classList.contains("fixa")) return;
+
 let titulo = r.querySelector(".registro-titulo").innerText;
 let conteudo = r.querySelector(".texto-tarefa").value;
 
@@ -181,27 +305,6 @@ carregarRegistros();
 </li>
 
 </ul>
-
-<script>
-
-function toggleRegistro(elemento){
-
-let conteudo =
-elemento.nextElementSibling;
-
-if(conteudo.style.display === "block"){
-
-conteudo.style.display = "none";
-
-}else{
-
-conteudo.style.display = "block";
-
-}
-
-}
-
-</script>
 
 </div>
 
