@@ -1,0 +1,799 @@
+body{
+
+background-image: url("https://i.pinimg.com/originals/5b/22/49/5b224949fa4150484fbcb3710612d915.gif");
+
+background-size: cover;
+
+background-position: center;
+
+background-repeat: no-repeat;
+
+background-attachment: fixed;
+
+margin:0;
+
+overflow-x:hidden; /* bloqueia só lateral */
+
+overflow-y:auto;   /* permite rolar pra baixo */
+
+
+}
+
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:linear-gradient(
+rgba(0,0,0,0.7),
+rgba(0,0,0,0.9)
+);
+
+z-index:-1;
+}
+
+
+.login-box{
+
+width:320px;
+
+margin:120px auto;
+
+padding:30px;
+
+text-align:center;
+
+position:relative;
+
+z-index:10;
+
+}
+
+input{
+
+width:90%;
+
+padding:10px;
+
+margin:10px 0;
+
+background-color:#050505;
+
+border:1px solid #8b0000;
+
+color:#ff4d4d;
+
+outline:none;
+
+}
+
+.perfil{
+
+max-width:700px;
+
+margin:auto;
+
+margin-top:40px;
+
+padding:25px;
+
+}
+
+.perfil-topo{
+
+display:flex;
+
+align-items:center;
+
+gap:20px;
+
+margin-bottom:20px;
+
+}
+
+.info-perfil h2{
+
+font-size:40px;
+
+margin:0;
+
+}
+
+.info-perfil p{
+
+margin:3px 0;
+
+}
+
+.foto-perfil{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+border:2px solid #8b0000;
+
+background:url("foto-perfil.jpeg");
+
+background-size:cover;
+
+background-position:center;
+
+box-shadow:0 0 10px #8b0000;
+
+}
+
+.tarefas{
+
+margin-top:20px;
+
+}
+
+.area-tarefa{
+
+display:flex;
+
+gap:10px;
+
+margin-top:10px;
+
+}
+
+#novaTarefa{
+
+flex:1;
+
+padding:10px;
+
+background:#050505;
+
+border:1px solid #8b0000;
+
+color:white;
+
+}
+
+.area-tarefa button{
+
+padding:10px 15px;
+
+background:black;
+
+border:1px solid #8b0000;
+
+color:#8b0000;
+
+cursor:pointer;
+
+}
+
+.area-tarefa button:hover{
+
+background:#8b0000;
+
+color:black;
+
+}
+
+#listaTarefas{
+
+margin-top:20px;
+
+padding:0;
+
+}
+
+#listaTarefas li{
+
+list-style:none;
+
+padding:10px;
+
+border-bottom:1px solid #8b0000;
+
+color:white;
+
+font-size:15px;
+
+}
+
+#listaTarefas li:hover{
+
+background:#140000;
+
+}
+
+header{
+border-bottom:1px solid #8b0000;
+padding:20px;
+text-align:center;
+background-color:#111;
+position: relative;
+z-index: 5;
+}
+
+nav{
+width:200px;
+height:100vh;
+
+position:sticky;
+top:0;
+z-index: 5;
+
+background:#0b0b0b;
+border-right:1px solid #8b0000;
+padding-top:30px;
+
+overflow-y:auto;
+box-shadow: 0 0 15px rgba(139,0,0,0.3);
+}
+
+/* caso tenha header */
+
+nav a{
+
+display:block;
+
+padding:14px 20px;
+
+color:#ff2b2b;
+
+text-decoration:none;
+
+font-size:16px;
+
+letter-spacing:1px;
+
+border-left:3px solid transparent;
+
+transition:0.3s;
+
+
+}
+
+nav a.ativo{
+
+background:#140000;
+
+border-left:3px solid #ff2b2b;
+
+font-weight:bold;
+
+}
+
+a{
+color:#8b0000;
+margin:15px;
+text-decoration:none;
+font-size:18px;
+}
+
+
+
+nav a:hover{
+
+background:#140000;
+
+border-left:3px solid #ff2b2b;
+
+padding-left:25px;
+
+transform: translateX(5px);
+
+}
+
+nav a::after{ /*ver se ele quer tirar dps*/
+    content:"";
+    display:block;
+    height:2px;
+    width:0%;
+    background:#ff2b2b;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+
+
+p{
+    color:white;
+}
+
+.card{
+border:1px solid #8b0000;
+padding:20px;
+margin-bottom:20px;
+background-color:#111;
+box-shadow:0 0 10px rgb(128, 0, 0);
+}
+
+.alerta{
+color:#8b0000;
+font-weight:bold;
+}
+
+h2 {
+    color: rgb(219, 226, 226);
+    font-size: 55px;
+}
+
+h1 {
+    color:rgb(121, 3, 23);
+    font-size: 35px;
+}
+
+h3 {
+    color: rgba(219, 226, 226, 0.945)
+}
+
+.logo{
+
+width:329px;
+
+margin-bottom:-20px;
+
+}
+
+.logo-canto{
+    position: fixed;
+    top: 10px;
+    left: 30px;
+    width: 170px;
+
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+
+    filter: drop-shadow(0 0 8px #8b0000);
+
+    animation: piscar 2s infinite; /* 👈 pisca sempre */
+}
+
+.logo-sumir{
+    opacity: 0;
+    transform: translateY(-40px);
+    pointer-events: none; /* evita clicar nela invisível */
+}
+
+@keyframes piscar{
+    0%{opacity:1;}
+    50%{opacity:0.6;}
+    100%{opacity:1;}
+}
+
+@keyframes glitchLogo{
+    0%{transform:translate(0);}
+    20%{transform:translate(-1px, 1px);}
+    40%{transform:translate(1px, -1px);}
+    60%{transform:translate(-1px, 0);}
+    80%{transform:translate(1px, 1px);}
+    100%{transform:translate(0);}
+}
+
+.logo-canto:hover{
+    animation: glitchLogo 0.2s infinite;
+}
+
+.fundo-sistema{
+
+background-image: url("fundo-sistema.png");
+
+background-size: cover;
+
+background-position: center;
+
+background-repeat: no-repeat;
+
+background-attachment: fixed;
+
+}
+
+.acesso-msg{
+max-width:1000px;
+width:100%;
+}
+
+.acesso-msg h2{
+
+font-size:38px;
+
+color:#d8d8d8;
+
+margin-bottom:5px;
+
+}
+
+.acesso-msg p{
+
+color:#8b0000;
+
+font-size:14px;
+
+}
+
+
+.bloco{
+
+background-color:#0a0a0a;
+
+border:1px solid #8b0000;
+
+padding:25px;
+
+margin-bottom:25px;
+
+box-shadow:0 0 10px rgba(139,0,0,0.2);
+
+}
+
+.titulo{
+
+font-size:38px;
+
+margin-bottom:15px;
+
+color:#dcdcdc;
+
+border-bottom:1px solid #8b0000;
+
+padding-bottom:8px;
+
+}
+
+.texto-tarefa{
+
+background-color:black;
+
+color:#8b0000;
+
+border:none;
+
+outline:none;
+
+resize:none;
+
+width:100%;
+
+min-height:40px;
+
+font-family:inherit;
+
+}
+
+#listaTarefas li{
+
+border:1px solid #8b0000;
+
+margin-top:10px;
+
+padding:10px;
+
+display:flex;
+
+gap:10px;
+
+align-items:flex-start;
+
+background-color:#0a0a0a;
+
+}
+
+#novaTarefa{
+
+width:100%;
+
+min-height:60px;
+
+background-color:black;
+
+color:#8b0000;
+
+border:1px solid #8b0000;
+
+padding:10px;
+
+resize:none;
+
+}
+
+.texto-tarefa{
+
+width:100%;
+
+min-height:145px;
+
+background-color:black;
+
+color:white;
+
+font-size: 18px;
+
+border:none;
+
+outline:none;
+
+resize:none;
+
+}
+
+
+
+.tarefas{
+
+max-height:300px; /* altura da área de tarefas */
+
+overflow-y:auto; /* ativa scroll interno */
+
+padding-right:10px;
+
+}
+
+.registro{
+
+border:1px solid #8b0000;
+
+margin-top:10px;
+
+background:#0a0a0a;
+
+}
+
+.registro-titulo{
+
+padding:15px;
+
+cursor:pointer;
+
+color:#ff2b2b;
+
+font-weight:bold;
+
+border-bottom:1px solid #8b0000;
+
+}
+
+.registro-titulo:hover{
+
+background:#140000;
+
+}
+
+.registro-conteudo{
+
+display:none;
+
+padding:15px;
+
+}
+
+.registro-conteudo textarea{
+
+width:100%;
+
+min-height:250px;
+
+background:black;
+
+color:white;
+
+border:none;
+
+outline:none;
+
+resize:vertical;
+
+}
+
+.registro-conteudo button{
+
+margin-top:10px;
+
+background:black;
+
+border:1px solid #8b0000;
+
+color:#8b0000;
+
+padding:5px 10px;
+
+cursor:pointer;
+
+}
+
+/* animação */
+@keyframes abrir{
+
+from{
+
+opacity:0;
+transform:translateY(-5px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+#listaCasos .registro-titulo{
+color:#ff4d4d;
+}
+
+#listaCasos .registro{
+border-color:#ff2b2b;
+box-shadow:0 0 10px rgba(255,0,0,0.2);
+}
+
+
+.container{
+    display:flex;
+    align-items:flex-start;
+}
+
+.layout-padrao{
+    flex:1;
+    padding:40px;
+    margin-left:20px; /* 👈 ESPAÇO ENTRE MENU E CONTEÚDO */
+}
+
+.layout-casos{
+    flex:1;
+    padding:40px;
+    margin-left:20px; /* 👈 ESPAÇO ENTRE MENU E CONTEÚDO */
+}
+
+.layout-registros{
+    flex:1;
+    padding:40px;
+    margin-left:20px; /* 👈 ESPAÇO ENTRE MENU E CONTEÚDO */
+}
+
+.layout-agentes{
+    flex:1;
+    padding:40px;
+    margin-left:20px; /* 👈 ESPAÇO ENTRE MENU E CONTEÚDO */
+}
+
+.layout-reliquias{
+    flex:1;
+    padding:40px;
+    margin-left:20px; /* 👈 ESPAÇO ENTRE MENU E CONTEÚDO */
+}
+
+.registro-conteudo{
+    display:none;
+    animation: abrir 0.3s ease;
+}
+
+.agente-topo{
+    display:flex;
+    margin-bottom:15px;
+}
+
+.foto-agente{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    border:2px solid #8b0000;
+    object-fit:cover;
+
+    box-shadow:0 0 15px #8b0000;
+
+    transition:0.3s;
+}
+
+/* efeito ao passar o mouse */
+.foto-agente:hover{
+    transform: scale(1.05);
+    box-shadow:0 0 25px #ff0000;
+}
+
+.btn-analise{
+    margin-top:15px;
+    padding:10px 15px;
+    background:black;
+    border:1px solid #8b0000;
+    color:#ff2b2b;
+    cursor:pointer;
+    font-weight:bold;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+.btn-analise:hover{
+    background:#8b0000;
+    color:rgb(0, 0, 0);
+}
+
+/* painel escondido */
+.painel-analise{
+    display:none;
+    margin-top:20px;
+    padding:20px;
+    background:#0a0a0a;
+    border:1px solid #8b0000;
+    box-shadow:0 0 15px rgba(255,0,0,0.2);
+    animation: abrir 0.3s ease;
+}
+
+/* citação estilo creepy */
+.citacao{
+    margin:15px 0;
+    font-style:italic;
+    color:#ff4d4d;
+    border-left:3px solid #8b0000;
+    padding-left:10px;
+}
+
+/* alerta final */
+.alerta-final{
+    margin-top:15px;
+    color:#ff0000;
+    font-weight:bold;
+}
+
+.reliquia-topo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:15px;
+}
+
+.foto-reliquia{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+
+    border:2px solid #8b0000;
+    box-shadow:0 0 20px #8b0000;
+
+    filter: contrast(120%) brightness(0.8);
+}
+
+/* fragmentos antigos */
+.fragmento{
+    margin-top:15px;
+    font-style:italic;
+    color:#888;
+    border-left:2px solid #444;
+    padding-left:10px;
+    opacity:0.8;
+}
+
+.simbolo{
+    font-size: 22px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* cores por elemento */
+.sangue{
+    color:#ff2b2b;
+    text-shadow:0 0 8px #8b0000;
+}
+
+.energia{
+    color:#7b04c0;
+    text-shadow:0 0 8px #9246e9;
+}
+
+.conhecimento{
+    color:#e6d012;
+    text-shadow:0 0 6px #e7f70a;
+}
+
+.morte{
+    color:#302f2f;
+    text-shadow:0 0 6px #555;
+}

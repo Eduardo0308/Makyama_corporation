@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Relíquias</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="fundo-sistema">
+
+<script>
+if(localStorage.getItem("logado") !== "sim"){
+    window.location.href = "login.html";
+}
+</script>
+
+<header>
+    <img src="logoreal.png" class="logo-canto">
+<h1>RELÍQUIAS</h1>
+<p>Reliquias carregadas...</p>
+</header>
+
+<div class="container"> <!-- 🔥 ADICIONADO -->
+
+<nav>
+<a href="index.html">中央Início</a>
+<a href="casos.html">案件Casos</a>
+<a href="registros.html">資料Registros</a>
+<a href="agentes.html">職員Agentes</a>
+<a href="reliquias.html" class="ativo">遺物Relíquias</a>
+</nav>
+
+
+<section class="layout-reliquias">
+
+<div class="bloco">
+
+<h2 class="titulo">ARQUIVO RESTRITO — STATUS DE BUSCA DAS RELÍQUIAS</h2>
+
+<p>Objetos anômalos catalogados.</p>
+
+</div>
+
+<div class="bloco">
+
+<h2 class="titulo">Relíquias</h2>
+<p>Arquivo restrito — monitoramento de artefatos.</p>
+
+<ul id="listaReliquias">
+
+<!-- 🩸 SANGUE -->
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+<span class="simbolo sangue">血</span>
+ Coroa de Espinhos — <span class="status-vermelho">🔴 LOCALIZADA</span>
+</div>
+
+<div class="registro-conteudo">
+
+<div class="reliquia-topo">
+<img src="reliquia_sangue.png" class="foto-reliquia">
+</div>
+
+<p><strong>Tipo:</strong> Relíquia de Sangue</p>
+<p><strong>Local:</strong> Santa Rovina</p>
+<p><strong>Portador:</strong> Carole Suzuki</p>
+
+<p class="alerta">Observações:</p>
+<p>
+Artefato ativo. Alto nível de corrupção registrado.<br>
+A portadora demonstra sinais avançados de simbiose.
+</p>
+
+</div>
+
+</li>
+
+<!-- ⚡ ENERGIA -->
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+<span class="simbolo energia">電</span>
+ Relíquia de Energia — <span class="status-preto">⚫ DESCONHECIDO</span>
+</div>
+
+<div class="registro-conteudo">
+<div class="reliquia-topo">
+<img src="reliquia_energia.png" class="foto-reliquia">
+</div>
+
+<p><strong>Local:</strong> Não identificado</p>
+<p><strong>Portador:</strong> Desconhecido</p>
+
+<p class="alerta">Observações:</p>
+<p>
+Nenhum rastro recente. Possível ocultação ativa.
+</p>
+
+</div>
+
+</li>
+
+<!-- 📖 CONHECIMENTO -->
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+<span class="simbolo conhecimento">知</span>
+ Relíquia de Conhecimento — <span class="status-amarelo">🟡 ÚLTIMO REGISTRO</span>
+</div>
+
+<div class="registro-conteudo">
+<div class="reliquia-topo">
+<img src="reliquia_conhecimento.png" class="foto-reliquia">
+</div>
+
+<p><strong>Local:</strong> Tenebris</p>
+<p><strong>Portador:</strong> Desconhecido</p>
+
+<p class="alerta">Capacidade:</p>
+<p>
+Restaurar aquilo que foi perdido — uma única vez.
+</p>
+
+<div class="citacao">
+“algo é trazido de volta… mas não necessariamente sozinho”
+</div>
+
+<div class="fragmento">
+ego qui servivi… dextra eius fui… et tamen vidi finem in principio…<br>
+(eu que servi… fui sua mão direita… e ainda assim vi o fim no começo…)
+<div class="fragmento"></div>
+…quattuor reliquiae non separandae… cum iunguntur… nascitur [GEN—]…
+<div class="fragmento"></div>
+…non elementum… sed initium absolutum…
+<div class="fragmento"></div>
+…ritus ille non vocatur ritus… sed transitus… reversio omnium…
+<div class="fragmento"></div>
+…ut deleatur quod factum est… ut mundus redeat ante peccatum…
+<div class="fragmento"></div>
+…sed pretium… semper pretium… #$%#$##$* … electi manent…
+</div>
+
+</div>
+
+</li>
+
+<!-- ☠️ MORTE -->
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+<span class="simbolo morte">死</span>
+ Relíquia de Morte — <span class="status-preto">⚫ DESCONHECIDO</span>
+</div>
+
+<div class="registro-conteudo">
+<div class="reliquia-topo">
+<img src="reliquia_morte.png" class="foto-reliquia">
+</div>
+
+<p><strong>Local:</strong> Não identificado</p>
+
+<p class="alerta">Observações:</p>
+<p>
+Silêncio absoluto nos registros — considerado anômalo.
+</p>
+
+<p>Possibilidades levantadas:</p>
+<P>
+Selamento fora do plano físico<br>
+Inatividade total<br>
+Influência ativa sem manifestação detectável
+</P>
+<P>Fragmento isolado (mesma caligrafia dos tomos):</P>
+
+<div class="fragmento">
+“mors non destruit… custodit limen…”<br>
+(a morte não destrói… ela guarda o limiar…)
+<div class="fragmento"></div>
+“…in ventre rubro… claudenda est…”
+</div>
+
+</div>
+
+</li>
+
+</ul>
+
+</div>
+
+<div class="bloco analise-operacional">
+
+<h2 class="titulo">⚠️ ANÁLISE GERAL</h2>
+
+<p>
+Das quatro relíquias, apenas uma possui confirmação direta de atividade.
+</p>
+
+<p>
+Os demais registros permanecem fora de alcance… ou compreensão.
+</p>
+
+<P>
+A tradução dos tomos antigos continua em andamento.<br>
+O processo tem se mostrado lento, inconsistente e mentalmente desgastante para os envolvidos.<br>
+Alguns tradutores relatam lapsos de memória, sonhos recorrentes e a sensação de já terem lido trechos que ainda não foram decifrados.
+</P>
+
+<P>
+A autoria dos fragmentos mais recentes é altamente controversa.<br>
+Indícios sugerem que o autor possuía acesso direto à entidade central dos eventos — possivelmente alguém próximo o suficiente para testemunhar… e temer.
+</P>
+
+<P>Trechos tradicionais:</P>
+
+<div class="fragmento">
+…signati sunt nodi… voluntates extra linea…<br>
+(os marcados são nós… vontades fora da linha…)
+</div>
+
+<div class="fragmento">
+…ipsa nutritur per eos…<br>
+(ela se alimenta deles…)
+</div>
+
+<div class="fragmento">
+…si cadit regnum eius… omnes delendi sunt…
+</div>
+
+<div class="fragmento">
+…nisi qui tenet… in manu… et facit iterum…
+</div>
+
+<div class="fragmento">
+…unus potest manere… sed erit solus…
+</div>
+
+<p>Os fragmentos não oferecem respostas diretas.</p>
+
+<P>Ainda assim, grande parte permanece ilegível.</P>
+
+<div class="citacao">
+“ou talvez — intencionalmente apagada.”
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+window.addEventListener("DOMContentLoaded", function(){
+
+    const logo = document.querySelector(".logo-canto");
+
+    if(!logo) return; // segurança
+
+    window.addEventListener("scroll", function(){
+
+        if(window.scrollY > 50){
+            logo.classList.add("logo-sumir");
+        } else {
+            logo.classList.remove("logo-sumir");
+        }
+
+    });
+
+});
+
+</script>
+
+<script>
+function toggleRegistro(elemento){
+
+    let conteudo = elemento.nextElementSibling;
+
+    if(conteudo.style.display === "block"){
+        conteudo.style.display = "none";
+    } else {
+        conteudo.style.display = "block";
+    }
+
+}
+</script>
+
+</body>
+</html>

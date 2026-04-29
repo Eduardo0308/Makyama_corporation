@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Banco de Dados - Makiyama Corporation</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+
+<body class="fundo-sistema">
+
+<script>
+if(localStorage.getItem("logado") !== "sim"){
+    window.location.href = "login.html";
+}
+</script>
+
+
+
+<header>
+
+<img src="logoreal.png" class="logo-canto">
+
+<h1>ARQUIVOS CONFIDENCIAIS</h1>
+
+<p>Sistema carregado...</p>
+
+</header>
+
+<div class="container"> <!-- 🔥 ADICIONADO -->
+
+<nav>
+
+<a href="index.html" class="ativo">中央 Início</a>
+
+<a href="casos.html">案件 Casos</a>
+
+<a href="registros.html">資料 Registros</a>
+
+<a href="agentes.html">職員 Agentes</a>
+
+<a href="reliquias.html">遺物 Relíquias</a>
+
+</nav>
+
+<section class="layout-padrao">
+
+    <div class="acesso-msg">
+
+<h2>Acesso autorizado.</h2>
+
+<p>Bem-vindo Dr. Shunya Hinode!</p>
+
+<p class="alerta">Nível de sigilo: ALTO</p>
+
+
+<div class="card perfil">
+
+<div class="perfil-topo">
+
+<div class="foto-perfil"></div>
+
+
+<div class="info-perfil">
+
+<h2>AGT-047 - Dr. Shunya Hinode</h2>
+
+<p>Status: Online</p>
+
+<p>Nível de acesso: 3</p>
+
+</div>
+
+</div>
+
+
+<hr>
+
+
+<div class="tarefas">
+
+<h3>Tarefas</h3>
+
+
+<div class="area-tarefa">
+
+<textarea
+id="novaTarefa"
+placeholder="Digite a tarefa"
+></textarea>
+
+
+<button onclick="adicionarTarefa()">
+Adicionar
+</button>
+
+</div>
+
+
+<ul id="listaTarefas"></ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<script>
+
+function adicionarTarefa(){
+
+let texto =
+document.getElementById("novaTarefa").value;
+
+if(texto == "") return;
+
+criarTarefa(texto);
+
+document.getElementById("novaTarefa").value = "";
+
+salvarTarefas();
+
+}
+
+
+function criarTarefa(texto){
+
+let li =
+document.createElement("li");
+
+li.innerHTML = `
+
+<textarea 
+class="texto-tarefa"
+oninput="salvarTarefas()"
+>${texto}</textarea>
+
+<button 
+class="btn-remover"
+onclick="removerTarefa(this)">
+X
+</button>
+
+`;
+
+document
+.getElementById("listaTarefas")
+.appendChild(li);
+
+}
+
+
+function removerTarefa(botao){
+
+botao.parentElement.remove();
+
+salvarTarefas();
+
+}
+
+
+function salvarTarefas(){
+
+let tarefas = [];
+
+document
+.querySelectorAll(".texto-tarefa")
+.forEach(function(t){
+
+tarefas.push(t.value);
+
+});
+
+localStorage.setItem(
+"tarefas",
+JSON.stringify(tarefas)
+);
+
+}
+
+
+function carregarTarefas(){
+
+let tarefas =
+JSON.parse(localStorage.getItem("tarefas"));
+
+if(!tarefas) return;
+
+tarefas.forEach(function(t){
+
+criarTarefa(t);
+
+});
+
+}
+
+
+carregarTarefas();
+
+</script>
+
+<script>
+window.addEventListener("DOMContentLoaded", function(){
+
+    const logo = document.querySelector(".logo-canto");
+
+    if(!logo) return;
+
+    window.addEventListener("scroll", function(){
+
+        if(window.scrollY > 50){
+            logo.classList.add("logo-sumir");
+        } else {
+            logo.classList.remove("logo-sumir");
+        }
+
+    });
+
+});
+</script>
+
+
+</body>
+
+</html>

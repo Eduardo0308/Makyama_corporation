@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+<meta charset="UTF-8">
+<title>Acesso Restrito</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.login-box{
+width:320px;
+margin:120px auto;
+padding:30px;
+text-align:center;
+}
+
+input{
+width:90%;
+padding:10px;
+margin:10px 0;
+background-color:black;
+border:1px solid rgb(128, 0, 0);
+color:rgb(128, 0, 11);
+outline:none;
+}
+
+button{
+padding:10px 20px;
+background-color:black;
+border:1px solid rgb(128, 0, 0);
+color:rgb(128, 0, 0);
+cursor:pointer;
+}
+
+button:hover{
+background-color:#ff3b3b;
+color:black;
+}
+
+.erro{
+color:#ff3b3b;
+margin-top:10px;
+display:none;
+font-weight:bold;
+}
+
+.usuario{
+display:none;
+margin-top:20px;
+}
+
+.foto{
+width:80px;
+height:80px;
+border-radius:50%;
+border:2px solid rgb(128, 0, 0);
+margin:auto;
+margin-bottom:10px;
+background-color:#222;
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="login-box">
+
+<img src="logo.png" class="logo">
+
+<p>Acesso restrito</p>
+
+<input 
+type="email" 
+id="email" 
+placeholder="E-mail"
+>
+
+<input 
+type="password" 
+id="senha" 
+placeholder="Senha"
+>
+
+<button onclick="verificarLogin()">ENTRAR</button>
+
+<p class="erro" id="erro">
+Email ou senha inválidos
+</p>
+
+<div class="usuario" id="usuarioBox">
+
+<div class="foto"></div>
+
+<h3 id="nomeUsuario"></h3>
+
+</div>
+
+</div>
+
+<script>
+
+const emailCorreto = "shushudamamae67@bmail.com";
+const senhaCorreta = "HanaNaoGosta67";
+const nomeUsuario = "Dr. Shunya Hinode";
+
+function verificarLogin(){
+
+let emailDigitado =
+document.getElementById("email").value;
+
+let senhaDigitada =
+document.getElementById("senha").value;
+
+if(
+emailDigitado === emailCorreto &&
+senhaDigitada === senhaCorreta
+){
+
+document.getElementById("erro")
+.style.display = "none";
+
+document.getElementById("usuarioBox")
+.style.display = "block";
+
+document.getElementById("nomeUsuario")
+.innerText = "Olá " + nomeUsuario;
+
+// 🔐 salva login
+localStorage.setItem("logado", "sim");
+
+setTimeout(function(){
+
+window.location.href = "index.html";
+
+},2000);
+
+}
+
+else{
+
+document.getElementById("erro")
+.style.display = "block";
+
+document.getElementById("nomeUsuario")
+.innerText = "Olá " + nomeUsuario;
+
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

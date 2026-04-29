@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Casos Paranormais</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="fundo-sistema">
+
+<script>
+if(localStorage.getItem("logado") !== "sim"){
+    window.location.href = "login.html";
+}
+</script>
+
+
+<header>
+    <img src="logoreal.png" class="logo-canto">
+<h1>CASOS PARANORMAIS</h1>
+<p>Casos carregados...</p>
+</header>
+
+<div class="container"> <!-- 🔥 ADICIONADO -->
+
+<nav>
+<a href="index.html">中央Início</a>
+<a href="casos.html" class="ativo">案件Casos</a>
+<a href="registros.html">資料Registros</a>
+<a href="agentes.html">職員Agentes</a>
+<a href="reliquias.html">遺物Relíquias</a>
+</nav>
+
+
+<section class="layout-casos">
+
+<div class="bloco">
+
+<h2 class="titulo">Casos</h2>
+
+<p>Lista de casos classificados.</p>
+
+</div>
+
+<div class="bloco">
+
+<h2 class="titulo">Casos Paranormais</h2>
+
+<!-- CRIAR CASO -->
+<div class="area-tarefa">
+
+<input
+id="tituloCaso"
+placeholder="Nome do caso"
+>
+
+<input
+id="nivelCaso"
+placeholder="Nível de prioridade (Baixo, Médio, Alto...)"
+>
+
+<textarea
+id="descricaoCaso"
+placeholder="Descrição do caso..."
+></textarea>
+
+<button onclick="adicionarCaso()">
+Adicionar Caso
+</button>
+
+</div>
+
+<!-- LISTA -->
+<ul id="listaCasos"></ul>
+
+</div>
+
+</section>
+
+<script>
+
+/* ADICIONAR CASO */
+function adicionarCaso(){
+
+let titulo = document.getElementById("tituloCaso").value;
+let nivel = document.getElementById("nivelCaso").value;
+let descricao = document.getElementById("descricaoCaso").value;
+
+if(titulo === "" || nivel === "" || descricao === "") return;
+
+criarCaso(titulo, nivel, descricao);
+
+document.getElementById("tituloCaso").value = "";
+document.getElementById("nivelCaso").value = "";
+document.getElementById("descricaoCaso").value = "";
+
+salvarCasos();
+
+}
+
+
+/* CRIAR CASO */
+function criarCaso(titulo, nivel, descricao){
+
+let li = document.createElement("li");
+
+li.classList.add("registro"); // reutiliza estilo
+
+li.innerHTML = `
+<div class="registro-titulo" onclick="toggleCaso(this)">
+${titulo} - <span style="color:#8b0000;">${nivel}</span>
+</div>
+
+<div class="registro-conteudo">
+
+<textarea class="texto-tarefa" oninput="salvarCasos()">${descricao}</textarea>
+
+<button onclick="removerCaso(this)">Excluir</button>
+
+</div>
+`;
+
+document.getElementById("listaCasos").appendChild(li);
+
+}
+
+
+/* ABRIR / FECHAR */
+function toggleCaso(elemento){
+
+let conteudo = elemento.nextElementSibling;
+
+conteudo.style.display =
+conteudo.style.display === "block" ? "none" : "block";
+
+}
+
+
+/* REMOVER */
+function removerCaso(botao){
+
+botao.closest("li").remove();
+
+salvarCasos();
+
+}
+
+
+/* SALVAR */
+function salvarCasos(){
+
+let casos = [];
+
+document.querySelectorAll("#listaCasos .registro").forEach(function(c){
+
+let titulo = c.querySelector(".registro-titulo").innerText;
+let descricao = c.querySelector(".texto-tarefa").value;
+
+casos.push({
+titulo: titulo,
+descricao: descricao
+});
+
+});
+
+localStorage.setItem("casos", JSON.stringify(casos));
+
+}
+
+
+/* CARREGAR */
+function carregarCasos(){
+
+let casos = JSON.parse(localStorage.getItem("casos"));
+
+if(!casos) return;
+
+casos.forEach(function(c){
+
+// separa título e nível
+let partes = c.titulo.split(" - ");
+let titulo = partes[0];
+let nivel = partes[1] || "Desconhecido";
+
+criarCaso(titulo, nivel, c.descricao);
+
+});
+
+}
+
+
+/* EXECUTA AO ABRIR */
+window.onload = function(){
+carregarCasos();
+};
+
+</script>
+
+<script>
+
+window.addEventListener("DOMContentLoaded", function(){
+
+    const logo = document.querySelector(".logo-canto");
+
+    if(!logo) return; // segurança
+
+    window.addEventListener("scroll", function(){
+
+        if(window.scrollY > 50){
+            logo.classList.add("logo-sumir");
+        } else {
+            logo.classList.remove("logo-sumir");
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

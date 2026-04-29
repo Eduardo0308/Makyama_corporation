@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Entidades</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="fundo-sistema">
+
+<script>
+if(localStorage.getItem("logado") !== "sim"){
+    window.location.href = "login.html";
+}
+</script>
+
+
+<header>
+    <img src="logoreal.png" class="logo-canto">
+<h1>REGISTROS</h1>
+<p>Registros carregados...</p>
+</header>
+
+<div class="container"> <!-- 🔥 ADICIONADO -->
+
+<nav>
+<a href="index.html">中央Início</a>
+<a href="casos.html">案件Casos</a>
+<a href="registros.html" class="ativo">資料Registros</a>
+<a href="agentes.html">職員Agentes</a>
+<a href="reliquias.html">遺物Relíquias</a>
+</nav>
+
+
+<section class="layout-registros">
+
+<div class="bloco">
+
+<h2 class="titulo">Registros</h2>
+
+<!-- ÁREA DE CRIAÇÃO -->
+<div class="area-tarefa">
+
+<input
+id="tituloRegistro"
+placeholder="Título do registro"
+>
+
+<textarea
+id="conteudoRegistro"
+placeholder="Conteúdo do registro..."
+></textarea>
+
+<button onclick="adicionarRegistro()">
+Adicionar Registro
+</button>
+
+</div>
+
+<!-- LISTA DE REGISTROS -->
+<ul id="listaRegistros"></ul>
+
+</div>
+
+</section>
+
+<script>
+
+/* ADICIONAR REGISTRO */
+function adicionarRegistro(){
+
+let titulo = document.getElementById("tituloRegistro").value;
+let conteudo = document.getElementById("conteudoRegistro").value;
+
+if(titulo === "" || conteudo === "") return;
+
+criarRegistro(titulo, conteudo);
+
+document.getElementById("tituloRegistro").value = "";
+document.getElementById("conteudoRegistro").value = "";
+
+salvarRegistros();
+
+}
+
+
+/* CRIAR REGISTRO */
+function criarRegistro(titulo, conteudo){
+
+let li = document.createElement("li");
+
+li.classList.add("registro");
+
+li.innerHTML = `
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+${titulo}
+</div>
+
+<div class="registro-conteudo">
+
+<textarea class="texto-tarefa" oninput="salvarRegistros()">${conteudo}</textarea>
+
+<button onclick="removerRegistro(this)">Excluir</button>
+
+</div>
+`;
+
+document.getElementById("listaRegistros").appendChild(li);
+
+}
+
+
+/* ABRIR / FECHAR */
+function toggleRegistro(elemento){
+
+let conteudo = elemento.nextElementSibling;
+
+conteudo.style.display =
+conteudo.style.display === "block" ? "none" : "block";
+
+}
+
+
+/* REMOVER */
+function removerRegistro(botao){
+
+botao.closest("li").remove();
+
+salvarRegistros();
+
+}
+
+
+/* SALVAR */
+function salvarRegistros(){
+
+let registros = [];
+
+document.querySelectorAll(".registro").forEach(function(r){
+
+let titulo = r.querySelector(".registro-titulo").innerText;
+let conteudo = r.querySelector(".texto-tarefa").value;
+
+registros.push({
+titulo: titulo,
+conteudo: conteudo
+});
+
+});
+
+localStorage.setItem("registros", JSON.stringify(registros));
+
+}
+
+
+/* CARREGAR */
+function carregarRegistros(){
+
+let registros = JSON.parse(localStorage.getItem("registros"));
+
+if(!registros) return;
+
+registros.forEach(function(r){
+criarRegistro(r.titulo, r.conteudo);
+});
+
+}
+
+
+/* EXECUTA AO ABRIR */
+window.onload = function(){
+carregarRegistros();
+};
+
+</script>
+
+ 
+
+</div>
+
+</li>
+
+</ul>
+
+<script>
+
+function toggleRegistro(elemento){
+
+let conteudo =
+elemento.nextElementSibling;
+
+if(conteudo.style.display === "block"){
+
+conteudo.style.display = "none";
+
+}else{
+
+conteudo.style.display = "block";
+
+}
+
+}
+
+</script>
+
+</div>
+
+</section>
+
+<script>
+
+window.addEventListener("DOMContentLoaded", function(){
+
+    const logo = document.querySelector(".logo-canto");
+
+    if(!logo) return; // segurança
+
+    window.addEventListener("scroll", function(){
+
+        if(window.scrollY > 50){
+            logo.classList.add("logo-sumir");
+        } else {
+            logo.classList.remove("logo-sumir");
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

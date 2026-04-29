@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Entidades</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="fundo-sistema">
+
+<script>
+if(localStorage.getItem("logado") !== "sim"){
+    window.location.href = "login.html";
+}
+</script>
+
+<header>
+    <img src="logoreal.png" class="logo-canto">
+    <h1>AGENTES</h1>
+    <p>Agentes carregados...</p>
+</header>
+
+<div class="container">
+
+<nav>
+<a href="index.html">中央Início</a>
+<a href="casos.html">案件Casos</a>
+<a href="registros.html">資料Registros</a>
+<a href="agentes.html" class="ativo">職員Agentes</a>
+<a href="reliquias.html">遺物Relíquias</a>
+</nav>
+
+<section class="layout-agentes">
+
+<div class="bloco">
+
+<h2 class="titulo">[ARQUIVO INTERNO — MONITORAMENTO DE AGENTES HOSTIS]</h2>
+<p>Banco de dados de agentes registrados.</p>
+
+
+
+<!-- 👇 LISTA AGORA FICA DENTRO DO BLOCO -->
+<ul id="listaAgentes">
+
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+ LUKE SULLIVAN — <span class="status-vermelho">🔴 IRRECUPERÁVEL</span>
+</div>
+
+<div class="registro-conteudo">
+
+<div class="agente-topo">
+    <img src="TLUKE.jpeg" class="foto-agente">
+</div>
+
+<p><strong>Condição:</strong> Infectado (estágio avançado)</p>
+<p><strong>Marca:</strong> Ativa / Corrompida</p>
+
+<p class="alerta">Avaliação:</p>
+<p>
+Sem chances de reversão.<br>
+O indivíduo apresenta degradação progressiva, mantendo apenas fragmentos de consciência.
+Potencial de instabilidade elevado.
+</p>
+
+<p class="alerta">Diretriz:</p>
+<p>
+Classificado como obstáculo direto.
+</p>
+<p>
+Eliminação recomendada caso interfira em operações futuras.
+</p>
+
+</div>
+
+</li>
+
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+ AMÉLIA BONILHA — <span class="status-vermelho">🟡 ATIVA</span>
+</div>
+
+<div class="registro-conteudo">
+
+<div class="agente-topo">
+    <img src="escolherim.jpeg" class="foto-agente">
+</div>
+
+<p><strong>Condição:</strong> Estável (física) / Instável (paranormal)</p>
+<p><strong>Marca:</strong> Ativa / Oscilante</p>
+
+<p class="alerta">Avaliação:</p>
+<p>
+Apresenta forte ligação emocional com o indivíduo Luke Sullivan.<br>
+Múltiplas tentativas de contato foram registradas, mesmo diante da condição irreversível do mesmo.
+</p>
+<p>A marca demonstra sinais de instabilidade crescente, possivelmente influenciada por fatores emocionais.</p>
+
+<p class="alerta">Diretriz:</p>
+<p>
+Monitoramento contínuo.
+</p>
+<p>
+Potencial de colapso ou despertar não previsto.
+</p>
+
+</div>
+
+</li>
+
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+ RIE MAKIYAMA — <span class="status-vermelho">⚫ DESCONHECIDO</span>
+</div>
+
+<div class="registro-conteudo">
+
+<div class="agente-topo">
+    <img src="escolherim.jpeg" class="foto-agente">
+</div>
+
+<p><strong>Condição:</strong> Não confirmada (possivelmente viva)</p>
+<p><strong>Marca:</strong> Ativa / Não desperta</p>
+
+<p class="alerta">Avaliação:</p>
+<p>
+Ausência total de sinais recentes.
+</p>
+<p>
+Histórico indica relevância indireta em eventos anteriores.<br>
+Possibilidade de sobrevivência não descartada.
+</p>
+
+<p class="alerta">Diretriz:</p>
+<p>
+Manter em estado de observação passiva.
+</p>
+<p>
+Atualização imediata caso novos dados surjam.
+</p>
+
+</div>
+
+</li>
+
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+ ALASKA OLIVEIRA RIVERS — <span class="status-vermelho"> 🔴 ATIVA</span>
+</div>
+
+<div class="registro-conteudo">
+
+<div class="agente-topo">
+    <img src="escolherim.jpeg" class="foto-agente">
+</div>
+
+<p><strong>Condição:</strong> Estável</p>
+<p><strong>Marca:</strong> Ativa / Altamente estável</p>
+
+<p class="alerta">Avaliação:</p>
+<p>
+Indivíduo apresenta controle incomum sobre a própria marca.<br>
+Níveis de estabilidade acima do padrão esperado.
+</p>
+<p>
+Classificada como ameaça significativa aos objetivos operacionais.
+</p>
+
+<p class="alerta">Diretriz:</p>
+<p>
+Envio de equipe para Nova York autorizado.<br>
+Operação em andamento: captura de parente direto (mãe) para uso como elemento de coerção.
+</p>
+<p class="alerta">Objetivo:</p>
+<p>
+Forçar submissão, cooperação ou quebra psicológica do alvo.
+</p>
+
+<p>
+Possível uso do indivíduo como:
+</p>
+
+<p>
+ponto de ancoragem<br>
+catalisador<br>
+ou ativo rendimento futuro
+</p>
+
+</div>
+
+</li>
+
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+ AURORA LUAR — <span class="status-vermelho">🟡 INSTÁVEL</span>
+</div>
+
+<div class="registro-conteudo">
+
+<div class="agente-topo">
+    <img src="escolherim.jpeg" class="foto-agente">
+</div>
+
+<p><strong>Condição:</strong> Comprometida emocionalmente</p>
+<p><strong>Marca:</strong> Ativa / Desestabilizada (evento recente)</p>
+
+<p class="alerta">Avaliação:</p>
+<p>
+Responsável indireta pela morte de Dante Luar, causada por manifestação não controlada de sua marca.
+</p>
+<p>
+Apresenta habilidade incomum associada a visões.<br>
+Possível acesso a informações não lineares.
+</p>
+<p>
+Estado atual favorece manipulação psicológica.
+</p>
+
+<p class="alerta">Diretriz:</p>
+<p>
+Considerar captura prioritária.
+</p>
+<p>
+Uso potencial como ferramenta de previsão e antecipação de eventos.
+</p>
+
+</div>
+
+</li>
+
+<li class="registro">
+
+<div class="registro-titulo" onclick="toggleRegistro(this)">
+ SAULO BRANDÃO — <span class="status-vermelho"> 🟡 INSTÁVEL</span>
+</div>
+
+<div class="registro-conteudo">
+
+<div class="agente-topo">
+    <img src="escolherim.jpeg" class="foto-agente">
+</div>
+
+<p><strong>Condição:</strong> Psicologicamente comprometido</p>
+<p><strong>Marca:</strong> Ativa / Influenciada</p>
+
+<p class="alerta">Avaliação:</p>
+<p>
+Extrema instabilidade emocional.
+</p>
+<p>
+Registros obtidos através de notas pessoais em dispositivo móvel indicam:
+</p>
+<p>
+deterioração psicológica progressiva<br>
+percepção distorcida do grupo<br>
+sensação de deslocamento e isolamento
+</p>
+<p>
+Relação afetiva identificada com indivíduo externo (“soldada russa”).<br>
+Possível apego emocional significativo, com indícios de dependência.
+</p>
+<p>
+Influência paranormal da região aparenta intensificar conflitos internos.
+</p>
+
+<p>Sinais detectados:</p>
+
+<p>
+ideação suicida prévia<br>
+pensamentos de traição ao grupo<br>
+comportamento autodestrutivo latente
+</p>
+
+<p class="alerta">Diretriz:</p>
+<p>
+Manter sob vigilância indireta.<br>
+Alto potencial de colapso espontâneo.
+</p>
+
+<p>Probabilidade estimada:</p>
+
+<p>
+Ruptura psicológica: ALTA<br>
+Traição: MODERADA<br>
+Suicídio: ALTA
+</p>
+
+</div>
+
+</li>
+
+<button class="btn-analise" onclick="toggleAnalise()">
+ Ver Análise Operacional
+</button>
+
+<div id="painel-analise" class="painel-analise">
+
+<h2 class="titulo">⚠️ ANÁLISE OPERACIONAL</h2>
+
+<p>
+Os indivíduos listados apresentam padrões consistentes de interferência nos eventos em curso.
+</p>
+
+<p>
+Observa-se que suas ações frequentemente escapam da previsibilidade estatística,
+sugerindo influência externa ou natureza anômala de suas marcas.
+</p>
+
+<p class="citacao">
+“eles não seguem o fluxo… eles quebram ele”
+</p>
+
+<p>A continuidade da operação exige:</p>
+
+<ul>
+<p>Neutralização de ameaças diretas</p>
+<p>Captura de ativos utilizáveis</p>
+<p>Redução de variáveis não controladas</p>
+</ul>
+
+<p>Ainda assim...</p>
+
+<p class="alerta-final">
+Alguns deles parecem já estar se destruindo sozinhos.
+</p>
+
+</div>
+
+</ul>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- 👇 SCRIPT QUE FALTAVA -->
+<script>
+
+function toggleRegistro(elemento){
+
+    let conteudo = elemento.nextElementSibling;
+
+    if(conteudo.style.display === "block"){
+        conteudo.style.display = "none";
+    } else {
+        conteudo.style.display = "block";
+    }
+
+}
+
+window.addEventListener("DOMContentLoaded", function(){
+
+    const logo = document.querySelector(".logo-canto");
+
+    if(!logo) return;
+
+    window.addEventListener("scroll", function(){
+
+        if(window.scrollY > 50){
+            logo.classList.add("logo-sumir");
+        } else {
+            logo.classList.remove("logo-sumir");
+        }
+
+    });
+
+});
+
+</script>
+
+<script>
+
+function toggleAnalise(){
+
+let painel = document.getElementById("painel-analise");
+
+if(painel.style.display === "block"){
+    painel.style.display = "none";
+}else{
+    painel.style.display = "block";
+}
+
+}
+
+</script>
+
+</body>
+</html>
